@@ -1,0 +1,16 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-lg);
+  padding: 44px 40px;
+  width: 100%; max-width: min(560px, 94vw);
+  position: relative; overflow: hidden;
+}
+
+/* Top shimmer accent line */
+.card::after {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,77,28,.55) 50%, transparent 100%);
+  pointer-events: none;
+}

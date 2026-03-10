@@ -1,0 +1,38 @@
+:root {
+  /* Surfaces */
+  --bg:         #04040a;
+  --surface:    #0b0b14;
+  --surface-2:  #111120;
+  --border:     #191926;
+  --border-hi:  #252538;
+
+  /* Brand */
+  --accent:      #ff4d1c;
+  --accent-dim:  rgba(255, 77, 28, .12);
+  --accent-glow: rgba(255, 77, 28, .35);
+
+  /* Semantic */
+  --ok:      #00d9a0;
+  --ok-dim:  rgba(0, 217, 160, .12);
+  --warn:    #ffb800;
+  --danger:  #ff2d55;
+
+  /* Text */
+  --text:  #ede9df;
+  --muted: #525268;
+
+  /* Typography */
+  --f-display: 'Unbounded', sans-serif;
+  --f-ui:      'Rajdhani', sans-serif;
+  --f-mono:    'Share Tech Mono', monospace;
+
+  /* Radii */
+  --r-sm:  8px;
+  --r:     12px;
+  --r-lg:  16px;
+
+  /* Transitions */
+  --t-fast: .15s ease;
+  --t-base: .25s ease;
+  --t-slow: .4s  ease;
+}

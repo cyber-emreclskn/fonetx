@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FonetX</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <!-- Design system -->
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+
+  <!-- Components -->
+  <link rel="stylesheet" href="css/components/card.css" />
+  <link rel="stylesheet" href="css/components/buttons.css" />
+  <link rel="stylesheet" href="css/components/inputs.css" />
+  <link rel="stylesheet" href="css/components/screen-transition.css" />
+
+  <!-- Screens -->
+  <link rel="stylesheet" href="css/screens/background.css" />
+  <link rel="stylesheet" href="css/screens/home.css" />
+  <link rel="stylesheet" href="css/screens/matchmaking.css" />
+  <link rel="stylesheet" href="css/screens/game.css" />
+  <link rel="stylesheet" href="css/screens/result.css" />
+</head>
+
+<body>
+
+  <!-- Background effect -->
+  <div class="bg-glyphs" id="bg-glyphs" aria-hidden="true"></div>
+
+  <div id="app">
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SCREEN 1 · HOME                       -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="screen active" id="screen-home">
+      <div class="card home-card">
+
+        <div>
+          <div class="eyebrow">KAPO GAMES — 1V1 FONETİK SAVAŞ</div>
+          <div class="display logo-title">FONET<em>X</em></div>
+          <p class="logo-desc">
+            Türkçe kelimeyi dinle. İngiliz harfleriyle nasıl okunduğunu yaz.<br>
+            Rakibinden daha isabetli misin? <strong>Sen kazanırsın.</strong>
+          </p>
+        </div>
+
+        <div class="stack-8">
+          <div class="mono-sm">KULLANICI ADIN</div>
+          <input
+            class="text-input"
+            id="username-input"
+            type="text"
+            placeholder="kullanıcı adı gir…"
+            maxlength="20"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <div class="error-msg" id="username-error">
+            3–20 karakter · harf, rakam veya alt çizgi kullan
+          </div>
+        </div>
+
+        <button class="btn-primary" id="play-btn">OYNA</button>
+
+        <div class="online-strip">
+          <div class="online-left">
+            <div class="pulse-dot"></div>
+            <span class="online-label">ÇEVRIMIÇI</span>
+          </div>
+          <span class="online-num" id="online-count">24</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SCREEN 2 · MATCHMAKING                -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="screen" id="screen-matchmaking">
+      <div class="card mm-card">
+
+        <div>
+          <div class="eyebrow">EŞLEŞTİRME</div>
+          <div class="display mm-title" id="mm-title">RAKİP ARANYOR</div>
+        </div>
+
+        <div class="vs-row">
+          <div class="player-slot self" id="self-slot">
+            <div class="p-avatar" id="self-avatar">?</div>
+            <div class="p-name"   id="self-name">OYUNCU</div>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="player-slot unknown" id="opp-slot">
+            <div class="p-avatar" id="opp-avatar">?</div>
+            <div class="p-name"   id="opp-name">ARANYOR…</div>
+          </div>
+        </div>
+
+        <div class="search-wrap" id="search-wrap">
+          <div class="search-track"><div class="search-fill"></div></div>
+          <div class="search-label">
+            KUYRUK TARANYOR <span class="blink-dots"><span>.</span><span>.</span><span>.</span></span>
+          </div>
+        </div>
+
+        <div class="found-banner" id="found-banner">✓ RAKİP BULUNDU — BAŞLIYORUZ</div>
+
+        <button class="btn-ghost" id="cancel-mm-btn">İPTAL</button>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SCREEN 3 · GAME                       -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="screen" id="screen-game">
+      <div class="card game-card">
+
+        <div class="game-top">
+          <div class="round-tag">TUR 01</div>
+          <div class="timer-wrap">
+            <div class="timer-ring">
+              <svg width="50" height="50" viewBox="0 0 50 50">
+                <circle class="ring-bg"   cx="25" cy="25" r="20" />
+                <circle class="ring-fill" cx="25" cy="25" r="20" id="ring-fill" />
+              </svg>
+              <div class="timer-num" id="timer-num">60</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="word-box">
+          <div class="word-label mono-sm">BU KELİMEYİ ÇEVİR</div>
+          <div class="turkish-word" id="game-word">—</div>
+        </div>
+
+        <button class="listen-btn" id="listen-btn">
+          <div class="wave">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+          TÜRKÇE DİNLE
+        </button>
+
+        <div class="stack-8">
+          <div class="mono-sm">SENİN TELAFFUZUN</div>
+          <input
+            class="answer-input"
+            id="answer-input"
+            type="text"
+            placeholder="nasıl okunduğunu yaz…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+
+        <div class="opp-bar">
+          <div class="opp-name"   id="opp-bar-name">RAKİP</div>
+          <div class="opp-status typing" id="opp-status">
+            <span>●</span>
+            yazıyor<span class="blink-dots"><span>.</span><span>.</span><span>.</span></span>
+          </div>
+        </div>
+
+        <button class="btn-primary" id="submit-btn">CEVABI GÖNDER</button>
+
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════ -->
+    <!-- SCREEN 4 · RESULT                     -->
+    <!-- ══════════════════════════════════════ -->
+    <div class="screen" id="screen-result">
+      <div class="card result-card">
+
+        <div class="outcome-block">
+          <div class="eyebrow">MAÇ SONA ERDİ</div>
+          <div class="outcome-title win" id="outcome-title">—</div>
+        </div>
+
+        <div class="scores-row">
+          <div class="score-block" id="p1-block">
+            <div class="sb-name"  id="p1-name">OYUNCU</div>
+            <div class="sb-score" id="p1-score">0</div>
+          </div>
+          <div class="scores-vs">VS</div>
+          <div class="score-block" id="p2-block">
+            <div class="sb-name"  id="p2-name">RAKİP</div>
+            <div class="sb-score" id="p2-score">0</div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="stack-12">
+          <button class="btn-ghost" id="listen-answer-btn">&#9654; CEVABIMI DİNLE</button>
+          <button class="btn-primary" id="play-again-btn">TEKRAR OYNA</button>
+          <button class="btn-ghost"   id="main-menu-btn">ANA MENÜ</button>
+        </div>
+
+      </div>
+    </div>
+
+  </div><!-- /#app -->
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

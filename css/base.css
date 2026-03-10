@@ -1,0 +1,61 @@
+/* ─── RESET ──────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow: hidden; background: var(--bg); }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+input  { border: none; background: none; outline: none; font: inherit; }
+
+/* ─── BODY BACKGROUND ────────────────────────────────── */
+body {
+  font-family: var(--f-ui);
+  color: var(--text);
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,.035) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+/* ─── APP SHELL ──────────────────────────────────────── */
+#app {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+/* ─── TYPOGRAPHY ATOMS ───────────────────────────────── */
+.eyebrow {
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 4px;
+  text-transform: uppercase; color: var(--accent);
+}
+.mono-sm {
+  font-family: var(--f-mono);
+  font-size: 12px; letter-spacing: 2.5px;
+  text-transform: uppercase; color: var(--muted);
+}
+.display {
+  font-family: var(--f-display);
+  font-weight: 900; line-height: .95;
+}
+
+/* ─── LAYOUT HELPERS ─────────────────────────────────── */
+.stack-12 { display: flex; flex-direction: column; gap: 12px; }
+.stack-8  { display: flex; flex-direction: column; gap:  8px; }
+.divider  { height: 1px; background: var(--border); }
+
+/* ─── SHARED ANIMATIONS ──────────────────────────────── */
+@keyframes blink {
+  0%, 100% { opacity: .15; }
+  50%       { opacity: 1;   }
+}
+.blink-dots span                  { animation: blink 1.4s ease-in-out infinite; }
+.blink-dots span:nth-child(2)     { animation-delay: .22s; }
+.blink-dots span:nth-child(3)     { animation-delay: .44s; }
+
+@keyframes pop-in {
+  from { transform: scale(.93); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}

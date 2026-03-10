@@ -1,0 +1,32 @@
+/* ─── PRIMARY ────────────────────────────────────────── */
+.btn-primary {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 18px 24px;
+  background: var(--accent);
+  border-radius: var(--r-sm);
+  font-family: var(--f-display);
+  font-size: 17px; font-weight: 900; letter-spacing: 2px;
+  color: #fff;
+  position: relative; overflow: hidden;
+  transition: box-shadow var(--t-base), transform var(--t-fast);
+}
+.btn-primary::before {
+  content: '';
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.18) 0%, transparent 60%);
+}
+.btn-primary:hover  { box-shadow: 0 0 32px var(--accent-glow); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(0); box-shadow: none; }
+.btn-primary:disabled { opacity: .38; pointer-events: none; }
+
+/* ─── GHOST ──────────────────────────────────────────── */
+.btn-ghost {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; padding: 16px 24px;
+  border: 1px solid var(--border-hi);
+  border-radius: var(--r-sm);
+  font-family: var(--f-display);
+  font-size: 15px; letter-spacing: 1px; color: var(--text);
+  transition: border-color var(--t-base), background var(--t-base);
+}
+.btn-ghost:hover { border-color: var(--accent); background: var(--accent-dim); }

@@ -1,0 +1,95 @@
+.game-card { display: flex; flex-direction: column; gap: 22px; }
+
+/* Header row */
+.game-top { display: flex; align-items: center; justify-content: space-between; }
+.round-tag {
+  font-family: var(--f-mono); font-size: 13px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 7px 14px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px;
+  color: var(--muted);
+}
+
+/* Timer ring */
+.timer-wrap { display: flex; align-items: center; }
+.timer-ring { position: relative; width: 58px; height: 58px; }
+.timer-ring svg { transform: rotate(-90deg); }
+.ring-bg   { fill: none; stroke: var(--border); stroke-width: 3.5; }
+.ring-fill {
+  fill: none; stroke: var(--accent); stroke-width: 3.5; stroke-linecap: round;
+  stroke-dasharray: 125.664; stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke .5s;
+}
+.ring-fill.urgent { stroke: var(--danger); animation: ring-flash .5s ease infinite alternate; }
+@keyframes ring-flash { from { opacity:1; } to { opacity:.3; } }
+
+.timer-num {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--f-display); font-size: 17px; font-weight: 900; color: var(--text);
+}
+.timer-num.urgent { color: var(--danger); }
+
+/* Word display */
+.word-box {
+  background: var(--surface-2); border: 1px solid var(--border-hi); border-radius: 14px;
+  padding: 32px 28px; text-align: center;
+  position: relative; overflow: hidden;
+}
+.word-box::before {
+  content: '';
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
+}
+.word-label    { font-size: 12px; letter-spacing: 5px; color: var(--muted); margin-bottom: 14px; }
+.turkish-word  {
+  font-family: var(--f-display);
+  font-size: clamp(52px, 12vw, 80px); font-weight: 900;
+  letter-spacing: -3px; line-height: 1; color: var(--text);
+}
+
+/* Listen button */
+.listen-btn {
+  display: flex; align-items: center; justify-content: center; gap: 12px;
+  width: 100%; padding: 15px 20px;
+  background: var(--surface-2); border: 1px solid var(--border-hi); border-radius: var(--r-sm);
+  font-family: var(--f-ui); font-size: 16px; font-weight: 600; letter-spacing: 1px; color: var(--text);
+  transition: border-color var(--t-base), background var(--t-base), color var(--t-base);
+}
+.listen-btn:hover,
+.listen-btn.playing { border-color: var(--accent); background: var(--accent-dim); color: var(--accent); }
+
+.wave { display: flex; align-items: center; gap: 2px; height: 20px; }
+.wave span { display: block; width: 3px; border-radius: 2px; background: currentColor; }
+.wave span:nth-child(1) { height:  7px; }
+.wave span:nth-child(2) { height: 13px; }
+.wave span:nth-child(3) { height: 20px; }
+.wave span:nth-child(4) { height: 11px; }
+.wave span:nth-child(5) { height:  5px; }
+.listen-btn.playing .wave span                  { animation: wave-anim .8s ease-in-out infinite alternate; }
+.listen-btn.playing .wave span:nth-child(2)     { animation-delay: .15s; }
+.listen-btn.playing .wave span:nth-child(3)     { animation-delay: .30s; }
+.listen-btn.playing .wave span:nth-child(4)     { animation-delay: .45s; }
+.listen-btn.playing .wave span:nth-child(5)     { animation-delay: .60s; }
+@keyframes wave-anim { from { transform: scaleY(.35); } to { transform: scaleY(1); } }
+
+/* Answer input */
+.answer-input {
+  width: 100%; padding: 18px; text-align: center;
+  background: var(--surface-2); border: 1px solid var(--border-hi); border-radius: var(--r-sm);
+  font-family: var(--f-mono); font-size: 26px; letter-spacing: 3px; color: var(--text);
+  transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+.answer-input::placeholder { font-size: 15px; letter-spacing: 0; opacity: .35; color: var(--muted); }
+.answer-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+
+/* Opponent status */
+.opp-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--r-sm);
+}
+.opp-name   { font-family: var(--f-mono); font-size: 13px; letter-spacing: 2px; color: var(--muted); }
+.opp-status { font-family: var(--f-mono); font-size: 13px; display: flex; align-items: center; gap: 5px; }
+.opp-status.typing    { color: var(--warn); }
+.opp-status.submitted { color: var(--ok); }
