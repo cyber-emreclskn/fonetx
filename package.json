@@ -1,0 +1,11 @@
+{
+  "name": "translate-game",
+  "version": "1.0.0",
+  "description": "Translate Game by KAPO GAMES",
+  "scripts": {
+    "start": "serve . --listen $PORT"
+  },
+  "dependencies": {
+    "serve": "^14.2.4"
+  }
+}
